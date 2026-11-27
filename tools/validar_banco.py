@@ -16,7 +16,7 @@ CAMPOS = ("id", "exam", "section", "difficulty", "type", "prompt", "options", "a
 
 
 def salida(codigo: str) -> str:
-    r = subprocess.run([sys.executable, "-I", "-c", codigo], capture_output=True, text=True, timeout=10,
+    r = subprocess.run([sys.executable, "-I", "-X", "utf8", "-c", codigo], capture_output=True, text=True, timeout=10,
                        encoding="utf-8")
     if r.returncode != 0:
         raise RuntimeError(r.stderr.strip().splitlines()[-1] if r.stderr else "error")
